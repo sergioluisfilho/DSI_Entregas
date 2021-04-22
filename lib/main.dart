@@ -96,7 +96,7 @@ class _RandomWordsState extends State<RandomWords> {
             ),
             body: ListView(children: divided),
           );
-        }, //...to here.
+        },
       ),
     );
   }
