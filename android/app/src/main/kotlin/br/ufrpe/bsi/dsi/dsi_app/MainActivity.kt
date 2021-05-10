@@ -1,4 +1,4 @@
-package com.example.entrega1
+package br.ufrpe.bsi.dsi.dsi_app
 
 import io.flutter.embedding.android.FlutterActivity
 
