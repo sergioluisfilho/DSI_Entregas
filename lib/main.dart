@@ -63,7 +63,7 @@ class DSIApp extends StatelessWidget {
     return MaterialApp(
       title: 'DSI App (BSI UFRPE)',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),

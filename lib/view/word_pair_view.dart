@@ -94,7 +94,7 @@ class _WordPairListPageState extends State<WordPairListPage> {
   ///Map com os ícones utilizados no [BottomNavigationBar].
   final _icons = {
     null: Icon(Icons.thumbs_up_down_outlined),
-    true: Icon(Icons.thumb_up, color: Colors.blue),
+    true: Icon(Icons.thumb_up, color: Colors.green),
     false: Icon(Icons.thumb_down, color: Colors.red),
   };
 
@@ -161,7 +161,11 @@ class _WordPairListPageState extends State<WordPairListPage> {
           ),
           onTap: () => _updateWordPair(context, wordPair),
         ),
-        onDismissed: (direction) => _controller.delete(wordPair),
+        onDismissed: (direction) => {
+              setState(() {
+                _controller.delete(wordPair);
+              })
+            },
         background: Container(
             color: Colors.red.withOpacity(0.80),
             child: Center(child: Text("Excluir"))));
