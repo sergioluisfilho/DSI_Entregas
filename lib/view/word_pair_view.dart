@@ -40,6 +40,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('DSI App (BSI UFRPE)'),
+        // actions: [
+        //   IconButton(
+        //       icon: Icon(
+        //         Icons.search,
+        //         color: Colors.white,
+        //       ),
+        //       onPressed: () {
+        //         print('search');
+        //       })
+        // ],
       ),
       body: _pages[_pageIndex],
       bottomNavigationBar: BottomNavigationBar(
