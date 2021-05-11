@@ -55,6 +55,10 @@ class DSIWordPairController {
     return List.unmodifiable(result);
   }
 
+  void pesquisa(text) {
+    print(text);
+  }
+
   ///Atualiza ou insere o par de palavras.
   ///A atualização ocorre caso o par de palavras possua um [id] setado.
   void save(DSIWordPair wordPair) {

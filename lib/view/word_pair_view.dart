@@ -145,18 +145,30 @@ class _WordPairListPageState extends State<WordPairListPage> {
   ///Constroi a listagem de itens.
   ///Note que é dobrada a quantidade de itens, para que a cada índice par, se
   ///inclua um separador ([Divider]) na listagem.
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: items.length * 2,
-        itemBuilder: (BuildContext _context, int i) {
-          if (i.isOdd) {
-            return Divider();
-          }
-          final int index = i ~/ 2;
-          return _buildRow(context, index + 1, items.elementAt(index));
-        });
+    return Column(
+      children: <Widget>[
+        TextField(onChanged: (text) {
+          setState(() {
+            _controller.pesquisa(text);
+          });
+        }),
+        Expanded(
+          child: ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: items.length * 2,
+              itemBuilder: (BuildContext _context, int i) {
+                if (i.isOdd) {
+                  return Divider();
+                }
+                final int index = i ~/ 2;
+                return _buildRow(context, index + 1, items.elementAt(index));
+              }),
+        ),
+      ],
+    );
   }
 
   ///Constroi uma linha da listagem a partir do par de palavras e do índice.
