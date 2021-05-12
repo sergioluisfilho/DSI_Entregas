@@ -5,6 +5,7 @@ int _nextWordPairId = 1;
 
 ///Lista de pares de palavras ([DSIWordPair]).
 List<DSIWordPair> _wordPairs;
+List<DSIWordPair> backupWordPairs;
 
 ///Controlador do módulo de pares de palavras.
 class DSIWordPairController {
@@ -24,6 +25,7 @@ class DSIWordPairController {
       _wordPairs.add(wordPair);
     }
     _wordPairs.sort();
+    backupWordPairs = _wordPairs;
   }
 
   ///Retorna uma lista com todos os pares de palavras cadastrados.
@@ -56,7 +58,16 @@ class DSIWordPairController {
   }
 
   void pesquisa(text) {
-    print(text);
+    // print(text);
+    // print(_wordPairs);
+    for (DSIWordPair i in _wordPairs) {
+      if (i.toString().contains(text)) {
+        print('igual');
+      }
+
+      //print(_wordPairs);
+      //_wordPairs = newWordPairs;
+    }
   }
 
   ///Atualiza ou insere o par de palavras.
