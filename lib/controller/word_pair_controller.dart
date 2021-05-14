@@ -58,16 +58,13 @@ class DSIWordPairController {
   }
 
   void pesquisa(text) {
-    // print(text);
-    // print(_wordPairs);
-    for (DSIWordPair i in _wordPairs) {
-      if (i.toString().contains(text)) {
-        print('igual');
-      }
-
-      //print(_wordPairs);
-      //_wordPairs = newWordPairs;
-    }
+    _wordPairs = backupWordPairs;
+    _wordPairs = _wordPairs.where(
+      (element) {
+        final label = '${element.first} ${element.second}';
+        return label.toLowerCase().startsWith(text.toLowerCase());
+      },
+    ).toList();
   }
 
   ///Atualiza ou insere o par de palavras.
@@ -86,6 +83,7 @@ class DSIWordPairController {
   ///Remove o par de palavras.
   void delete(DSIWordPair wordPair) {
     _wordPairs.remove(wordPair);
+    backupWordPairs.remove(wordPair);
     _wordPairs.sort();
   }
 }
