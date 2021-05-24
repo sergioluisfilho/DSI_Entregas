@@ -1,4 +1,5 @@
 import 'package:dsi_app/model/word_pair_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 ///Armazena o próximo id.
 int _nextWordPairId = 1;
@@ -26,6 +27,8 @@ class DSIWordPairController {
     }
     _wordPairs.sort();
     backupWordPairs = _wordPairs;
+    //getFireStoreData();
+    saveOnFireStore(backupWordPairs);
   }
 
   ///Retorna uma lista com todos os pares de palavras cadastrados.
@@ -77,6 +80,15 @@ class DSIWordPairController {
       delete(oldWordPair);
     }
     _wordPairs.add(wordPair);
+    Firestore.instance
+        .collection('wordpairs')
+        .document('${wordPair.id}')
+        .setData({
+      "id": wordPair.id,
+      "first": wordPair.first,
+      "second": wordPair.second,
+      "favourite": wordPair.favourite
+    });
     _wordPairs.sort();
   }
 
@@ -84,6 +96,26 @@ class DSIWordPairController {
   void delete(DSIWordPair wordPair) {
     _wordPairs.remove(wordPair);
     backupWordPairs.remove(wordPair);
+    Firestore.instance
+        .collection('wordpairs')
+        .document('${wordPair.id}')
+        .delete();
     _wordPairs.sort();
+  }
+
+  void getFireStoreData() {
+    var result = Firestore.instance.collection('wordpairs').getDocuments();
+    print(result);
+  }
+
+  void saveOnFireStore(List<DSIWordPair> wordPairs) {
+    for (DSIWordPair i in wordPairs) {
+      Firestore.instance.collection('wordpairs').document('${i.id}').setData({
+        "id": i.id,
+        "first": i.first,
+        "second": i.second,
+        "favourite": i.favourite
+      });
+    }
   }
 }
