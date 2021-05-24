@@ -73,6 +73,7 @@ class DSIApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),
+      debugShowCheckedModeBanner: false,
       initialRoute: HomePage.routeName,
       routes: _buildRoutes(context),
     );
