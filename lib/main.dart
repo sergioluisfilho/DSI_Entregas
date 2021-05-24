@@ -1,6 +1,7 @@
 import 'package:dsi_app/view/word_pair_view.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 ///TPC-2 (branch_wordPairs1):
 ///Este app foi baseado no tutorial do Flutter disponível em:
@@ -52,6 +53,11 @@ import 'package:flutter/material.dart';
 /// https://pt.wikipedia.org/wiki/MVC
 /// https://pt.wikipedia.org/wiki/Singleton
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Firestore.instance
+  //     .collection('users')
+  //     .document('Pontuação')
+  //     .setData({"points": 250});
   runApp(DSIApp());
 }
 
@@ -63,7 +69,7 @@ class DSIApp extends StatelessWidget {
     return MaterialApp(
       title: 'DSI App (BSI UFRPE)',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),
