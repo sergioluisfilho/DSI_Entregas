@@ -80,6 +80,15 @@ class DSIWordPairController {
       delete(oldWordPair);
     }
     _wordPairs.add(wordPair);
+    Firestore.instance
+        .collection('wordpairs')
+        .document('${wordPair.id}')
+        .setData({
+      "id": wordPair.id,
+      "first": wordPair.first,
+      "second": wordPair.second,
+      "favourite": wordPair.favourite
+    });
     _wordPairs.sort();
   }
 
